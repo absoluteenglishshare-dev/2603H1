@@ -1,0 +1,849 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<title>ABSOLUTE 영어 | 26년 고1 3월 모의 단어퀴즈</title>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700;900&family=Playfair+Display:wght@700;900&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<script src="https://code.responsivevoice.org/responsivevoice.js?key=FREE"></script>
+<style>
+:root {
+  --navy: #0d1b2a;
+  --navy2: #1a2d42;
+  --navy3: #243547;
+  --gold: #c9a84c;
+  --gold2: #e8c96a;
+  --gold3: #f5e0a0;
+  --white: #f8f4ec;
+  --muted: #8a9bb0;
+  --green: #2ecc71;
+  --red: #e74c3c;
+  --border: #2a3f55;
+  --card: #162030;
+}
+*{box-sizing:border-box;margin:0;padding:0;-webkit-tap-highlight-color:transparent}
+body{background:var(--navy);color:var(--white);font-family:'Noto Sans KR',sans-serif;min-height:100vh;overflow-x:hidden}
+
+/* ── 배경 패턴 ── */
+body::before{content:'';position:fixed;inset:0;background:radial-gradient(ellipse at 20% 20%,rgba(201,168,76,.06) 0%,transparent 50%),radial-gradient(ellipse at 80% 80%,rgba(201,168,76,.04) 0%,transparent 50%);pointer-events:none;z-index:0}
+
+/* ── 헤더 ── */
+.header{position:sticky;top:0;z-index:100;background:linear-gradient(135deg,#0a1520 0%,#162030 100%);border-bottom:1px solid rgba(201,168,76,.25);padding:0 16px}
+.header-inner{max-width:600px;margin:0 auto;display:flex;align-items:center;justify-content:space-between;padding:10px 0}
+.brand-wrap{display:flex;align-items:center;gap:10px}
+.brand-logo{width:38px;height:38px;object-fit:contain}
+.brand-text{}
+.brand-name{font-family:'Playfair Display',serif;font-size:16px;font-weight:900;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;letter-spacing:1px}
+.brand-sub{font-size:9px;color:var(--muted);letter-spacing:2px;text-transform:uppercase;margin-top:1px}
+.contact-wrap{text-align:right}
+.contact-num{font-family:'Space Mono',monospace;font-size:10px;color:var(--gold2);line-height:1.6}
+
+/* ── 화면 ── */
+.screen{display:none;max-width:600px;margin:0 auto;padding:16px;position:relative;z-index:1}
+.screen.active{display:block;animation:slideUp .35s ease}
+@keyframes slideUp{from{opacity:0;transform:translateY(18px)}to{opacity:1;transform:translateY(0)}}
+
+/* ── 홈 ── */
+.hero{text-align:center;padding:24px 0 20px}
+.hero-badge{display:inline-block;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:99px;padding:4px 14px;font-size:11px;color:var(--gold2);letter-spacing:1px;margin-bottom:12px}
+.hero-title{font-family:'Playfair Display',serif;font-size:28px;font-weight:900;line-height:1.2;margin-bottom:8px}
+.hero-title span{background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent}
+.hero-desc{font-size:12px;color:var(--muted);line-height:1.7}
+
+.stat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:8px;margin:20px 0}
+.stat-card{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 6px;text-align:center;position:relative;overflow:hidden}
+.stat-card::after{content:'';position:absolute;inset:0;background:linear-gradient(135deg,rgba(201,168,76,.05),transparent);pointer-events:none}
+.stat-n{font-family:'Playfair Display',serif;font-size:24px;color:var(--gold);line-height:1}
+.stat-l{font-size:9px;color:var(--muted);margin-top:3px;letter-spacing:.5px}
+
+.sec-label{font-size:10px;font-weight:700;letter-spacing:2px;color:var(--gold);text-transform:uppercase;margin-bottom:10px;display:flex;align-items:center;gap:8px}
+.sec-label::after{content:'';flex:1;height:1px;background:linear-gradient(to right,rgba(201,168,76,.3),transparent)}
+
+/* 지문 선택 */
+.filter-section{background:var(--card);border:1px solid var(--border);border-radius:16px;padding:14px;margin-bottom:16px}
+.filter-title{font-size:12px;color:var(--gold2);margin-bottom:10px;font-weight:700}
+.num-grid{display:grid;grid-template-columns:repeat(5,1fr);gap:7px;margin-bottom:10px}
+.num-btn{background:var(--navy3);border:1.5px solid var(--border);border-radius:9px;color:var(--muted);padding:9px 4px;font-size:12px;font-family:'Space Mono',monospace;cursor:pointer;transition:all .2s;text-align:center}
+.num-btn.sel{background:rgba(201,168,76,.15);border-color:var(--gold);color:var(--gold2);font-weight:700}
+.num-btn:active{transform:scale(.95)}
+.filter-btns{display:flex;gap:8px}
+.f-btn{flex:1;padding:9px;border-radius:8px;font-size:12px;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all .2s;border:1.5px solid var(--border)}
+.f-btn.all{background:rgba(201,168,76,.1);border-color:rgba(201,168,76,.4);color:var(--gold2)}
+.f-btn.none{background:transparent;color:var(--muted)}
+
+/* 퀴즈 타입 */
+.mode-grid{display:grid;gap:10px;margin-bottom:16px}
+.mode-card{background:var(--card);border:1.5px solid var(--border);border-radius:14px;padding:14px 16px;cursor:pointer;transition:all .2s;display:flex;align-items:center;gap:12px}
+.mode-card:active{transform:scale(.98)}
+.mode-card:hover{border-color:rgba(201,168,76,.5)}
+.mode-icon{width:42px;height:42px;border-radius:10px;display:flex;align-items:center;justify-content:center;font-size:19px;flex-shrink:0}
+.mi-a{background:linear-gradient(135deg,#1a6b4a,#1a8c5c)}
+.mi-b{background:linear-gradient(135deg,#1a4a6b,#1a5c8c)}
+.mi-c{background:linear-gradient(135deg,#6b4a1a,#8c6b1a)}
+.mode-info{flex:1}
+.mode-name{font-weight:700;font-size:13px;margin-bottom:2px;color:var(--white)}
+.mode-desc{font-size:11px;color:var(--muted)}
+.mode-count{font-family:'Space Mono',monospace;font-size:11px;color:var(--gold);background:rgba(201,168,76,.1);border-radius:6px;padding:2px 8px}
+
+.count-row{display:flex;gap:8px;margin-bottom:20px}
+.cnt-btn{background:var(--card);border:1.5px solid var(--border);border-radius:9px;color:var(--muted);padding:9px 14px;font-size:12px;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all .2s}
+.cnt-btn.sel{border-color:var(--gold);background:rgba(201,168,76,.1);color:var(--gold2);font-weight:700}
+
+/* ── 퀴즈 공통 ── */
+.qz-top{display:flex;align-items:center;gap:10px;margin-bottom:16px}
+.back-btn{width:36px;height:36px;border-radius:9px;background:var(--card);border:1px solid var(--border);color:var(--white);font-size:15px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0}
+.prog-wrap{flex:1}
+.prog-label{font-size:11px;color:var(--muted);margin-bottom:5px;display:flex;justify-content:space-between}
+.prog-bar{height:4px;background:var(--border);border-radius:99px;overflow:hidden}
+.prog-fill{height:100%;background:linear-gradient(90deg,var(--gold),var(--gold2));border-radius:99px;transition:width .4s ease}
+
+.badge-row{display:flex;gap:7px;margin-bottom:12px;flex-wrap:wrap}
+.badge{display:inline-flex;align-items:center;gap:4px;background:rgba(201,168,76,.08);border:1px solid rgba(201,168,76,.2);border-radius:99px;padding:3px 10px;font-size:10px;color:var(--gold2)}
+.badge.src{color:var(--muted);border-color:var(--border);background:var(--card)}
+
+/* 단어 카드 */
+.word-card{background:var(--card);border:1px solid var(--border);border-radius:18px;padding:28px 20px;margin-bottom:16px;text-align:center;position:relative;overflow:hidden;min-height:130px;display:flex;align-items:center;justify-content:center;flex-direction:column}
+.word-card::before{content:'';position:absolute;top:0;left:0;right:0;height:2px;background:linear-gradient(90deg,transparent,var(--gold),var(--gold2),transparent)}
+.word-card::after{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 0%,rgba(201,168,76,.06),transparent 60%);pointer-events:none}
+.word-main{font-family:'Playfair Display',serif;font-size:26px;font-weight:700;line-height:1.3;word-break:break-word;margin-bottom:6px;color:var(--white)}
+.word-sub{font-size:11px;color:var(--muted)}
+.word-syn{font-size:12px;color:var(--gold2);margin-top:6px;font-style:italic;line-height:1.5}
+
+/* 발음 버튼 */
+.speak-btn{display:inline-flex;align-items:center;gap:5px;background:rgba(201,168,76,.1);border:1px solid rgba(201,168,76,.3);border-radius:99px;padding:5px 12px;font-size:11px;color:var(--gold2);cursor:pointer;transition:all .2s;margin-top:8px}
+.speak-btn:active{transform:scale(.95);background:rgba(201,168,76,.2)}
+.speak-btn.playing{background:rgba(201,168,76,.25);border-color:var(--gold)}
+
+/* 선택지 */
+.choices{display:grid;gap:8px}
+.choice{background:var(--card);border:1.5px solid var(--border);border-radius:12px;color:var(--white);padding:14px 15px;font-size:13px;font-family:'Noto Sans KR',sans-serif;text-align:left;cursor:pointer;transition:all .15s;display:flex;align-items:center;gap:10px;word-break:break-word;line-height:1.5}
+.choice:active:not(:disabled){transform:scale(.98)}
+.ch-num{width:25px;height:25px;border-radius:7px;background:var(--border);display:flex;align-items:center;justify-content:center;font-size:11px;font-weight:700;flex-shrink:0;font-family:'Space Mono',monospace;color:var(--muted)}
+.choice.correct{border-color:var(--green);background:rgba(46,204,113,.08)}
+.choice.correct .ch-num{background:var(--green);color:white}
+.choice.wrong{border-color:var(--red);background:rgba(231,76,60,.08);opacity:.7}
+.choice.wrong .ch-num{background:var(--red);color:white}
+.choice:disabled{cursor:default}
+
+/* 정답 화면 */
+.answer-reveal{background:var(--card);border:1px solid var(--border);border-radius:14px;padding:16px;margin-top:12px;display:none}
+.answer-reveal.show{display:block;animation:slideUp .3s ease}
+.answer-section{margin-bottom:10px}
+.answer-label{font-size:10px;color:var(--gold);font-weight:700;letter-spacing:1px;text-transform:uppercase;margin-bottom:4px;display:flex;align-items:center;gap:5px}
+.answer-value{font-size:13px;color:var(--white);line-height:1.6}
+.answer-value.en{font-family:'Space Mono',monospace;font-size:12px;color:var(--gold2)}
+.answer-divider{height:1px;background:var(--border);margin:8px 0}
+.correct-tag{display:inline-block;background:rgba(46,204,113,.15);border:1px solid rgba(46,204,113,.3);border-radius:6px;padding:2px 8px;font-size:11px;color:var(--green);margin-bottom:8px}
+.wrong-tag{display:inline-block;background:rgba(231,76,60,.15);border:1px solid rgba(231,76,60,.3);border-radius:6px;padding:2px 8px;font-size:11px;color:var(--red);margin-bottom:8px}
+
+.next-btn{width:100%;padding:15px;border-radius:12px;background:linear-gradient(135deg,var(--gold),var(--gold2));border:none;color:var(--navy);font-size:15px;font-weight:700;font-family:'Noto Sans KR',sans-serif;cursor:pointer;margin-top:12px;display:none;letter-spacing:.5px}
+.next-btn.show{display:block}
+.next-btn:active{opacity:.9;transform:scale(.99)}
+
+/* ── 결과 화면 ── */
+.result-hero{text-align:center;padding:28px 0 22px}
+.result-ring{width:130px;height:130px;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 18px;background:conic-gradient(var(--gold) 0%,var(--gold2) var(--pct,0%),var(--border) var(--pct,0%))}
+.result-inner{width:100px;height:100px;border-radius:50%;background:var(--navy);display:flex;flex-direction:column;align-items:center;justify-content:center}
+.result-pct{font-family:'Playfair Display',serif;font-size:30px;color:var(--gold);line-height:1}
+.result-pl{font-size:9px;color:var(--muted)}
+.result-title{font-family:'Playfair Display',serif;font-size:22px;margin-bottom:5px}
+.result-sub{font-size:12px;color:var(--muted)}
+
+.res-stats{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin:20px 0}
+.res-stat{background:var(--card);border:1px solid var(--border);border-radius:12px;padding:12px 8px;text-align:center}
+.res-n{font-family:'Playfair Display',serif;font-size:26px;line-height:1}
+.res-n.g{color:var(--green)}.res-n.r{color:var(--red)}.res-n.gold{color:var(--gold)}
+.res-l{font-size:10px;color:var(--muted);margin-top:3px}
+
+.wrong-section{margin-top:4px}
+.wrong-header{font-size:12px;font-weight:700;color:var(--red);margin-bottom:10px;display:flex;align-items:center;gap:6px}
+.wrong-item{background:var(--card);border:1px solid var(--border);border-left:3px solid var(--red);border-radius:11px;padding:12px 14px;margin-bottom:8px}
+.wrong-word{font-family:'Space Mono',monospace;font-size:13px;font-weight:700;color:var(--gold2)}
+.wrong-meaning{font-size:12px;color:var(--muted);margin-top:3px}
+.wrong-syn{font-size:11px;color:rgba(201,168,76,.6);margin-top:3px;font-style:italic}
+.wrong-ex{font-size:11px;color:var(--muted);margin-top:5px;border-top:1px solid var(--border);padding-top:5px;line-height:1.5}
+
+.res-btns{display:grid;gap:8px;margin-top:20px}
+.res-btn{width:100%;padding:14px;border-radius:12px;font-size:14px;font-weight:700;font-family:'Noto Sans KR',sans-serif;cursor:pointer;transition:all .2s;border:none;letter-spacing:.5px}
+.res-btn:active{transform:scale(.98)}
+.res-btn.primary{background:linear-gradient(135deg,var(--gold),var(--gold2));color:var(--navy)}
+.res-btn.ghost{background:var(--card);border:1.5px solid var(--border);color:var(--white)}
+.res-btn.retry{background:rgba(231,76,60,.1);border:1.5px solid rgba(231,76,60,.3);color:var(--red)}
+
+/* 광고 푸터 */
+.promo-footer{background:linear-gradient(135deg,#0a1520,#162030);border-top:1px solid rgba(201,168,76,.2);padding:14px 16px;text-align:center;margin-top:28px}
+.promo-inner{max-width:600px;margin:0 auto;display:flex;align-items:center;justify-content:center;gap:12px;flex-wrap:wrap}
+.promo-logo-wrap{display:flex;align-items:center;gap:8px}
+.promo-name{font-family:'Playfair Display',serif;font-size:14px;background:linear-gradient(135deg,var(--gold),var(--gold2));-webkit-background-clip:text;-webkit-text-fill-color:transparent;font-weight:700}
+.promo-contact{font-family:'Space Mono',monospace;font-size:11px;color:var(--gold2);line-height:1.7}
+.promo-divider{width:1px;height:30px;background:rgba(201,168,76,.2)}
+</style>
+</head>
+<body>
+
+<!-- 헤더 -->
+<div class="header">
+  <div class="header-inner">
+    <div class="brand-wrap">
+      <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 40 40'%3E%3Ccircle cx='20' cy='20' r='18' fill='%230d1b2a' stroke='%23c9a84c' stroke-width='1.5'/%3E%3Ctext x='20' y='25' text-anchor='middle' font-family='serif' font-size='12' font-weight='bold' fill='%23c9a84c'%3EAE%3C/text%3E%3C/svg%3E" class="brand-logo" alt="AE">
+      <div class="brand-text">
+        <div class="brand-name">ABSOLUTE 영어</div>
+        <div class="brand-sub">26년 고1 3월 모의고사</div>
+      </div>
+    </div>
+    <div class="contact-wrap">
+      <div class="contact-num">1관 031-378-5993</div>
+      <div class="contact-num">2관 031-378-5994</div>
+    </div>
+  </div>
+</div>
+
+<!-- 홈 -->
+<div class="screen active" id="screen-home">
+  <div class="hero">
+    <div class="hero-badge">2026학년도 3월 고1 전국연합학력평가</div>
+    <div class="hero-title">단어 퀴즈<br><span>완전 정복</span></div>
+    <div class="hero-desc">20번~40번 전범위 · 지문별 선택 학습<br>단어→뜻 · 뜻→단어 · 유의어→단어</div>
+  </div>
+
+  <div class="stat-grid">
+    <div class="stat-card"><div class="stat-n" id="total-words">0</div><div class="stat-l">전체단어</div></div>
+    <div class="stat-card"><div class="stat-n">21</div><div class="stat-l">지문수</div></div>
+    <div class="stat-card"><div class="stat-n">3</div><div class="stat-l">퀴즈유형</div></div>
+    <div class="stat-card"><div class="stat-n" id="sel-count-display">0</div><div class="stat-l">선택단어</div></div>
+  </div>
+
+  <!-- 지문 선택 -->
+  <div class="sec-label">지문 번호 선택</div>
+  <div class="filter-section">
+    <div class="filter-title">📌 원하는 지문만 선택하세요 (복수 선택 가능)</div>
+    <div class="num-grid" id="num-grid"></div>
+    <div class="filter-btns">
+      <button class="f-btn all" onclick="selectAll()">✅ 전체 선택</button>
+      <button class="f-btn none" onclick="selectNone()">☐ 전체 해제</button>
+    </div>
+  </div>
+
+  <!-- 퀴즈 유형 -->
+  <div class="sec-label">퀴즈 유형</div>
+  <div class="mode-grid">
+    <div class="mode-card" onclick="startQuiz('e2k')">
+      <div class="mode-icon mi-a">🔤</div>
+      <div class="mode-info">
+        <div class="mode-name">영어 → 한글 뜻</div>
+        <div class="mode-desc">영단어를 보고 올바른 한글 뜻 선택</div>
+      </div>
+      <div class="mode-count" id="cnt-e2k">0개</div>
+    </div>
+    <div class="mode-card" onclick="startQuiz('k2e')">
+      <div class="mode-icon mi-b">📖</div>
+      <div class="mode-info">
+        <div class="mode-name">한글 뜻 → 영어</div>
+        <div class="mode-desc">한글 뜻을 보고 올바른 영단어 선택</div>
+      </div>
+      <div class="mode-count" id="cnt-k2e">0개</div>
+    </div>
+    <div class="mode-card" onclick="startQuiz('syn')">
+      <div class="mode-icon mi-c">🔁</div>
+      <div class="mode-info">
+        <div class="mode-name">유의어 → 본문 단어</div>
+        <div class="mode-desc">유의어를 보고 지문 속 단어 선택</div>
+      </div>
+      <div class="mode-count" id="cnt-syn">0개</div>
+    </div>
+  </div>
+
+  <div class="sec-label">문제 수</div>
+  <div class="count-row">
+    <button class="cnt-btn" onclick="setCnt(this,10)">10문제</button>
+    <button class="cnt-btn sel" onclick="setCnt(this,20)">20문제</button>
+    <button class="cnt-btn" onclick="setCnt(this,30)">30문제</button>
+    <button class="cnt-btn" onclick="setCnt(this,0)">전체</button>
+  </div>
+
+  <div class="promo-footer">
+    <div class="promo-inner">
+      <div class="promo-logo-wrap">
+        <div class="promo-name">ABSOLUTE EDUCATION</div>
+      </div>
+      <div class="promo-divider"></div>
+      <div class="promo-contact">
+        1관 031-378-5993<br>
+        2관 031-378-5994
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- 퀴즈 화면 -->
+<div class="screen" id="screen-quiz">
+  <div class="qz-top">
+    <button class="back-btn" onclick="goHome()">←</button>
+    <div class="prog-wrap">
+      <div class="prog-label">
+        <span id="q-label">1/20</span>
+        <span id="q-score">맞춤: 0</span>
+      </div>
+      <div class="prog-bar"><div class="prog-fill" id="q-prog" style="width:0%"></div></div>
+    </div>
+  </div>
+
+  <div class="badge-row">
+    <span class="badge" id="q-type-badge">🔤 영어→한글</span>
+    <span class="badge src" id="q-src-badge">20번</span>
+  </div>
+
+  <div class="word-card">
+    <div class="word-main" id="q-word">—</div>
+    <div class="word-sub" id="q-hint">위 단어의 뜻을 고르세요</div>
+    <button class="speak-btn" id="speak-btn" onclick="speakWord()">
+      🔊 <span>발음 듣기</span>
+    </button>
+  </div>
+
+  <div class="choices" id="q-choices"></div>
+
+  <div class="answer-reveal" id="answer-reveal">
+    <div id="answer-tag"></div>
+    <div class="answer-section">
+      <div class="answer-label">📝 정답</div>
+      <div class="answer-value en" id="a-word"></div>
+      <div class="answer-value" id="a-meaning"></div>
+    </div>
+    <div class="answer-divider"></div>
+    <div class="answer-section" id="a-syn-section">
+      <div class="answer-label">🔁 유의어</div>
+      <div class="answer-value" id="a-syn"></div>
+    </div>
+    <div class="answer-divider" id="a-ant-div"></div>
+    <div class="answer-section" id="a-ant-section">
+      <div class="answer-label">↔️ 반의어</div>
+      <div class="answer-value" id="a-ant"></div>
+    </div>
+    <div class="answer-divider" id="a-ex-div"></div>
+    <div class="answer-section" id="a-ex-section">
+      <div class="answer-label">📖 예문</div>
+      <div class="answer-value" id="a-ex" style="font-size:12px;line-height:1.7"></div>
+    </div>
+  </div>
+
+  <button class="next-btn" id="q-next" onclick="nextQ()">다음 →</button>
+
+  <div class="promo-footer">
+    <div class="promo-inner">
+      <div class="promo-name">ABSOLUTE EDUCATION</div>
+      <div class="promo-divider"></div>
+      <div class="promo-contact">1관 031-378-5993 · 2관 031-378-5994</div>
+    </div>
+  </div>
+</div>
+
+<!-- 결과 화면 -->
+<div class="screen" id="screen-result">
+  <div class="result-hero">
+    <div class="result-ring" id="result-ring">
+      <div class="result-inner">
+        <div class="result-pct" id="r-pct">0%</div>
+        <div class="result-pl">정답률</div>
+      </div>
+    </div>
+    <div class="result-title" id="r-title">완료!</div>
+    <div class="result-sub" id="r-sub"></div>
+  </div>
+
+  <div class="res-stats">
+    <div class="res-stat"><div class="res-n g" id="r-correct">0</div><div class="res-l">정답</div></div>
+    <div class="res-stat"><div class="res-n r" id="r-wrong">0</div><div class="res-l">오답</div></div>
+    <div class="res-stat"><div class="res-n gold" id="r-total">0</div><div class="res-l">전체</div></div>
+  </div>
+
+  <div class="wrong-section">
+    <div class="wrong-header">❌ 오답 노트 — 틀린 단어 정리</div>
+    <div id="wrong-list"></div>
+  </div>
+
+  <div class="res-btns">
+    <button class="res-btn retry" onclick="retryWrong()">❌ 오답만 다시 풀기</button>
+    <button class="res-btn primary" onclick="restartSame()">🔄 같은 설정으로 재시작</button>
+    <button class="res-btn ghost" onclick="goHome()">🏠 홈으로</button>
+  </div>
+
+  <div class="promo-footer">
+    <div class="promo-inner">
+      <div class="promo-name">ABSOLUTE EDUCATION</div>
+      <div class="promo-divider"></div>
+      <div class="promo-contact">1관 031-378-5993 · 2관 031-378-5994</div>
+    </div>
+  </div>
+</div>
+
+<script>
+// ══════════════════════════════════════════════
+// 단어 데이터 (20~40번, 단어+뜻+유의어+반의어+예문)
+// ══════════════════════════════════════════════
+const ALL_WORDS = [
+// ── 20번 ──
+{n:'20',w:'influence',m:'~에 영향을 주다',syn:'affect, impact, stir',ant:'ignore, neglect',ex:'There is simply no better way to influence an audience than by opening up with a personal story.'},
+{n:'20',w:'stir',m:'~을 자극하다, 동요시키다',syn:'provoke, arouse, excite',ant:'calm, soothe',ex:'A personal anecdote can stir deep emotions in an audience instantly.'},
+{n:'20',w:'audience',m:'청중',syn:'crowd, listeners, spectators',ant:'speaker, performer',ex:'Opening up with a personal story is the best way to bond with an audience of strangers.'},
+{n:'20',w:'anecdote',m:'일화',syn:'story, tale, account',ant:'',ex:'Sharing a self-deprecating anecdote is a tried-and-tested way of bonding with strangers.'},
+{n:'20',w:'persuade',m:'~을 설득하다',syn:'convince, win over, influence',ant:'dissuade, deter',ex:'Laying the groundwork allows you to then persuade your audience.'},
+{n:'20',w:'identify with',m:'~와 동일시하다',syn:'relate to, empathize with, connect with',ant:'distance from',ex:'By sharing a revealing story, you allow audience members to identify with you.'},
+{n:'20',w:'flaw',m:'결점',syn:'fault, defect, weakness',ant:'strength, virtue',ex:'Sharing a personal flaw helps the audience connect with you authentically.'},
+{n:'20',w:'bond with',m:'~와 유대감을 형성하다',syn:'connect with, relate to, build rapport with',ant:'alienate, disconnect from',ex:'People will bond with you — the person making those arguments.'},
+// ── 21번 ──
+{n:'21',w:'unprecedented',m:'전례 없는',syn:'unparalleled, unheard-of, extraordinary',ant:'common, ordinary, typical',ex:'We are now at a point of unprecedented genetic, cultural, and environmental power.'},
+{n:'21',w:'far-reaching',m:'(영향·결과가) 광범위한',syn:'extensive, wide-ranging, broad',ant:'limited, narrow, local',ex:'Our decisions today have far-reaching impacts that place a responsibility on us.'},
+{n:'21',w:'well-being',m:'행복, 웰빙',syn:'welfare, happiness, health',ant:'misery, hardship',ex:'We must time travel forward to imagine the well-being of billions of future people.'},
+{n:'21',w:'descendant',m:'후손',syn:'offspring, heir, successor',ant:'ancestor, predecessor',ex:'We must not steal the shade from our descendants.'},
+{n:'21',w:'ancestor',m:'조상',syn:'forefather, predecessor, forebear',ant:'descendant, offspring',ex:'While we enjoy the gardens planted by our ancestors, we must care for the future.'},
+{n:'21',w:'stewardship',m:'(재산·조직체 등의) 관리',syn:'management, guardianship, caretaking',ant:'neglect, abandonment',ex:'Leaders created "seven generation stewardship," instructing people to consider the impact of every decision.'},
+{n:'21',w:'responsibility',m:'책임',syn:'duty, obligation, accountability',ant:'irresponsibility, negligence',ex:'Our decisions place a responsibility on us to become good ancestors.'},
+{n:'21',w:'humanity',m:'인류',syn:'mankind, humankind, people',ant:'',ex:'We are part of a grander humanity connected across time.'},
+// ── 22번 ──
+{n:'22',w:'neuroplasticity',m:'신경 가소성',syn:'brain adaptability, neural flexibility',ant:'',ex:'Taste preferences can be changed throughout our lives due to neuroplasticity.'},
+{n:'22',w:'adaptability',m:'적응력',syn:'flexibility, versatility, resilience',ant:'rigidity, inflexibility',ex:'Neuroplasticity refers to our brain\'s amazing adaptability.'},
+{n:'22',w:'flexibility',m:'유연성',syn:'adaptability, pliability, elasticity',ant:'rigidity, inflexibility',ex:'There is far more flexibility in our food behaviors than most think.'},
+{n:'22',w:'readjust',m:'~을 재조정하다',syn:'adapt, modify, recalibrate',ant:'fix, maintain',ex:'Just as kids learn to like nutritious foods, adults can readjust their taste.'},
+{n:'22',w:'nutritious',m:'영양분이 많은',syn:'nourishing, wholesome, healthy',ant:'unhealthy, junk',ex:'Kids gradually learn to like nutritious foods through repeated exposure.'},
+{n:'22',w:'gradually',m:'점진적으로',syn:'slowly, steadily, progressively',ant:'suddenly, abruptly',ex:'Many gradually learn to prefer the nutty flavors of whole grain foods.'},
+{n:'22',w:'exposure',m:'경험, 노출',syn:'contact, experience, encounter',ant:'isolation, avoidance',ex:'Repeated exposure and a willingness to change is the key to adjusting taste.'},
+{n:'22',w:'inborn',m:'타고난',syn:'innate, natural, inherent',ant:'learned, acquired',ex:'Despite inborn biological differences, taste preferences can be changed throughout life.'},
+// ── 23번 ──
+{n:'23',w:'conformity',m:'순응',syn:'compliance, obedience, agreement',ant:'rebellion, defiance, nonconformity',ex:'Conformity in the teenage years has been studied by putting young people in situations.'},
+{n:'23',w:'tendency',m:'경향',syn:'inclination, trend, disposition',ant:'aversion, reluctance',ex:'This tendency to follow others decreases after the age of 14.'},
+{n:'23',w:'resilient',m:'회복 탄력적인',syn:'tough, adaptable, strong',ant:'fragile, weak, vulnerable',ex:'As young people mature, they become more resilient and able to defend their opinions.'},
+{n:'23',w:'mature',m:'성숙해지다',syn:'develop, grow, evolve',ant:'decline, regress',ex:'As young people mature, they become more able to disagree with the group.'},
+{n:'23',w:'peer',m:'또래',syn:'equal, contemporary, fellow',ant:'superior, elder',ex:'The influence of the peer group is not the same across all ages.'},
+{n:'23',w:'stand up for',m:'~을 지지하다',syn:'defend, support, advocate for',ant:'oppose, betray, abandon',ex:'By 16 or 17, young people are more able to stand up for their own opinion.'},
+{n:'23',w:'demonstrate',m:'~을 입증하다',syn:'show, prove, establish',ant:'disprove, deny',ex:'This finding demonstrates that the influence of the peer group changes with age.'},
+{n:'23',w:'go along with',m:'~에게 동조하다',syn:'agree with, follow, conform to',ant:'oppose, resist, defy',ex:'The willingness to go along with others reaches a peak around age 14.'},
+// ── 24번 ──
+{n:'24',w:'habit',m:'습관',syn:'routine, practice, custom',ant:'irregularity, exception',ex:'Habits aren\'t bad — we need them to survive.'},
+{n:'24',w:'essential',m:'필수적인',syn:'necessary, vital, crucial',ant:'unnecessary, optional',ex:'Understanding how the brain uses habits is essential for business.'},
+{n:'24',w:'temptation',m:'유혹',syn:'allure, lure, enticement',ant:'repulsion, deterrent',ex:'Attaching a new habit to an existing one is known as temptation bundling.'},
+{n:'24',w:'combine A with B',m:'A를 B와 결합하다',syn:'merge, unite, integrate',ant:'separate, divide',ex:'This strategy combines a tempting habit with one people feel forced to put off.'},
+{n:'24',w:'put ~ off',m:'~을 미루다',syn:'postpone, delay, defer',ant:'advance, prioritize',ex:'People would like to exercise but may otherwise feel forced to put it off.'},
+{n:'24',w:'participant',m:'참여자',syn:'member, attendee, contributor',ant:'observer, bystander',ex:'The participants whose devices were held hostage were 51% more likely to visit the gym.'},
+{n:'24',w:'opt',m:'~하는 것을 택하다',syn:'choose, select, decide',ant:'reject, refuse',ex:'Nearly two-thirds opted to pay to have gym-only access for their devices.'},
+{n:'24',w:'have access to',m:'~에 접근할 수 있다',syn:'be able to use, reach, obtain',ant:'be denied, lack access to',ex:'Participants could only have access to their audio devices while at the gym.'},
+// ── 29번 ──
+{n:'29',w:'conceptual',m:'개념의',syn:'abstract, theoretical, notional',ant:'concrete, tangible',ex:'A conceptual model is an explanation of how something works.'},
+{n:'29',w:'accurate',m:'정확한',syn:'correct, precise, exact',ant:'inaccurate, wrong, vague',ex:'A conceptual model doesn\'t have to be complete or even accurate, as long as it is useful.'},
+{n:'29',w:'confusion',m:'혼란',syn:'disorder, chaos, misunderstanding',ant:'clarity, order',ex:'Sometimes these depictions can add to the confusion.'},
+{n:'29',w:'coherent',m:'일관된',syn:'consistent, logical, clear',ant:'incoherent, inconsistent',ex:'The conceptual model is of one coherent image.'},
+{n:'29',w:'consist of',m:'~로 구성되다',syn:'be made up of, comprise, include',ant:'exclude, lack',ex:'It may actually consist of parts, each located on different machines.'},
+{n:'29',w:'display',m:'~을 표시하다',syn:'show, exhibit, present',ant:'hide, conceal',ex:'The material appears to be on the device, for that is where it is displayed.'},
+{n:'29',w:'effective',m:'효과적인',syn:'efficient, successful, productive',ant:'ineffective, useless',ex:'Those are effective conceptualizations designed to make them easier to use.'},
+// ── 30번 ──
+{n:'30',w:'constraint',m:'제약',syn:'limitation, restriction, obstacle',ant:'freedom, flexibility',ex:'Walking is still the main transportation mode because of constraints on resources.'},
+{n:'30',w:'unavoidable',m:'피할 수 없는',syn:'inevitable, inescapable, certain',ant:'avoidable, preventable',ex:'Walking under those conditions is an unavoidable burden.'},
+{n:'30',w:'burden',m:'부담',syn:'load, weight, hardship',ant:'relief, ease',ex:'Walking under those conditions is an unavoidable burden that consumes productive capability.'},
+{n:'30',w:'simulate',m:'~을 모방하다',syn:'imitate, replicate, copy',ant:'originate, create',ex:'Treadmills simulate walking, which could be accomplished with a transport purpose on the street.'},
+{n:'30',w:'accomplish',m:'~을 완수하다',syn:'achieve, complete, fulfill',ant:'fail, abandon',ex:'Walking could be accomplished with a transport purpose on the street.'},
+{n:'30',w:'expend',m:'~을 소비하다',syn:'use up, spend, consume',ant:'save, conserve',ex:'People expend human energy that they can hardly spare.'},
+{n:'30',w:'ironically',m:'아이러니하게도',syn:'paradoxically, strangely, unexpectedly',ant:'',ex:'Ironically, treadmills are among the most popular exercise machines.'},
+// ── 31번 ──
+{n:'31',w:'overwhelmed',m:'압도된',syn:'swamped, overpowered, flooded',ant:'calm, controlled, at ease',ex:'Kids can feel overwhelmed by so much stuff in their play space.'},
+{n:'31',w:'streamline',m:'간소화하다',syn:'simplify, organize, optimize',ant:'complicate, clutter',ex:'Streamlining a play space is so important for children\'s creativity.'},
+{n:'31',w:'indecision',m:'망설임, 주저함',syn:'hesitation, uncertainty, vacillation',ant:'decisiveness, confidence',ex:'You want your kids to feel inspired and imaginative — not overcome with indecision.'},
+{n:'31',w:'anxiety',m:'불안감',syn:'worry, stress, unease',ant:'calm, peace, relief',ex:'Just like other rooms, a cluttered play space can cause anxiety in kids.'},
+{n:'31',w:'imaginative',m:'상상력이 풍부한',syn:'creative, inventive, original',ant:'unimaginative, dull',ex:'You want your kids to feel inspired and imaginative in the room.'},
+{n:'31',w:'inspired',m:'영감을 받은',syn:'motivated, stimulated, energized',ant:'uninspired, bored, dull',ex:'Kids should feel inspired in their play space, not overwhelmed.'},
+// ── 32번 ──
+{n:'32',w:'familiarity',m:'친숙함',syn:'acquaintance, recognition, comfort',ant:'unfamiliarity, strangeness',ex:'Students often mistake familiarity with true mastery.'},
+{n:'32',w:'mastery',m:'숙달',syn:'expertise, proficiency, command',ant:'ignorance, incompetence',ex:'Teaching materials transforms surface familiarity into real mastery.'},
+{n:'32',w:'illusion',m:'착각',syn:'delusion, misconception, false impression',ant:'reality, truth',ex:'Recognizing information creates a dangerous illusion of competence.'},
+{n:'32',w:'competence',m:'능력',syn:'skill, capability, proficiency',ant:'incompetence, inability',ex:'Students create a dangerous illusion of competence.'},
+{n:'32',w:'overestimate',m:'~을 과대평가하다',syn:'overvalue, exaggerate, misjudge',ant:'underestimate, undervalue',ex:'This cognitive bias leads learners to overestimate their understanding.'},
+{n:'32',w:'recall',m:'~을 회상하다',syn:'remember, retrieve, recollect',ant:'forget, overlook',ex:'Students struggle when asked to recall or apply information independently.'},
+{n:'32',w:'reliable',m:'신뢰할 수 있는',syn:'trustworthy, dependable, consistent',ant:'unreliable, unstable',ex:'Teaching ensures solid, reliable understanding.'},
+{n:'32',w:'bias',m:'편향',syn:'prejudice, partiality, inclination',ant:'fairness, objectivity',ex:'This cognitive bias, strengthened by passive study methods, leads to overestimation.'},
+// ── 33번 ──
+{n:'33',w:'intellectual',m:'지적인',syn:'mental, cerebral, scholarly',ant:'physical, emotional',ex:'Their first great intellectual leap came from separating numbers from objects.'},
+{n:'33',w:'represent',m:'~을 표현하다',syn:'symbolize, stand for, denote',ant:'misrepresent, distort',ex:'They would represent five fish with a numeral alongside a symbol for the fish.'},
+{n:'33',w:'emancipated',m:'해방된',syn:'freed, liberated, independent',ant:'enslaved, bound, dependent',ex:'The Sumerians developed the idea of an emancipated number, existing in its own right.'},
+{n:'33',w:'civilization',m:'문명',syn:'society, culture, nation',ant:'barbarity, primitive state',ex:'To the earliest civilizations, the emancipated number was intellectually new and powerful.'},
+{n:'33',w:'take for granted',m:'~을 당연하게 여기다',syn:'overlook, undervalue, ignore',ant:'appreciate, value',ex:'It is easy to take the emancipated number for granted.'},
+{n:'33',w:'separate A from B',m:'B에서 A를 분리하다',syn:'divide, detach, distinguish',ant:'combine, unite, merge',ex:'Their intellectual leap came from separating the number from the object they were counting.'},
+// ── 34번 ──
+{n:'34',w:'ingroup',m:'내집단',syn:'in-group, own group, community',ant:'outgroup, out-group',ex:'The emphasis on learning from the ingroup takes little account of individuals.'},
+{n:'34',w:'outgroup',m:'외집단',syn:'out-group, outsiders, external group',ant:'ingroup, in-group',ex:'Their dislike did not affect their tendency to copy ingroup over outgroup behavior.'},
+{n:'34',w:'overimitation',m:'과잉 모방',syn:'excessive copying, blind imitation',ant:'selective imitation',ex:'This overimitation reveals that we copy not to learn most efficiently, but to conform.'},
+{n:'34',w:'antisocial',m:'반사회적인',syn:'hostile, aggressive, disruptive',ant:'prosocial, cooperative, friendly',ex:'Children disliked ingroup members who behaved in an antisocial fashion.'},
+{n:'34',w:'prosocial',m:'친사회적인',syn:'cooperative, helpful, kind',ant:'antisocial, aggressive',ex:'They liked prosocial members of an outgroup more than antisocial ingroup members.'},
+{n:'34',w:'conform to',m:'~에 따르다',syn:'comply with, follow, obey',ant:'defy, rebel against',ex:'We want to learn how to do things in the proper way — conforming to ingroup conventions.'},
+{n:'34',w:'convention',m:'관습',syn:'custom, tradition, norm',ant:'innovation, originality',ex:'We copy the ingroup to conform to its rules and conventions.'},
+// ── 35번 ──
+{n:'35',w:'stable',m:'안정적인',syn:'steady, fixed, constant',ant:'unstable, volatile, changing',ex:'Your body has a stable quantity of fat cells by the time you are an adult.'},
+{n:'35',w:'trigger',m:'방아쇠, 유발하다',syn:'activate, prompt, set off',ant:'suppress, prevent, inhibit',ex:'The set point is the trigger that sends a message to your brain about fat cell levels.'},
+{n:'35',w:'desire',m:'욕구',syn:'craving, urge, longing',ant:'aversion, dislike, apathy',ex:'A person with a high set point will battle with a strong desire for food when dieting.'},
+{n:'35',w:'quantity',m:'수량, 양',syn:'amount, number, volume',ant:'quality',ex:'Your body has a stable quantity of fat cells by adulthood.'},
+// ── 36번 ──
+{n:'36',w:'catchphrase',m:'유명 문구',syn:'slogan, motto, saying',ant:'',ex:'Initially the catchphrase "less is more" had a simple meaning.'},
+{n:'36',w:'complex',m:'복잡한',syn:'complicated, intricate, elaborate',ant:'simple, plain, straightforward',ex:'Everything simple is better and more beautiful than the complex and tangled.'},
+{n:'36',w:'tangled',m:'뒤엉킨',syn:'complicated, confused, knotted',ant:'simple, clear, organized',ex:'Simple things are better than the complex and tangled.'},
+{n:'36',w:'extinguish',m:'소멸시키다',syn:'eliminate, erase, wipe out',ant:'create, ignite, preserve',ex:'This way of thinking slowly extinguishes certain habits from daily life.'},
+{n:'36',w:'massive',m:'거대한',syn:'huge, enormous, gigantic',ant:'tiny, small, miniature',ex:'Think about the heavy, massive radio receivers that existed back in the day.'},
+{n:'36',w:'reduction',m:'축소',syn:'decrease, cutback, decline',ant:'increase, expansion',ex:'With each reduction, devices eventually developed into the phones in our pockets.'},
+// ── 37번 ──
+{n:'37',w:'sustainably',m:'지속 가능하게',syn:'responsibly, eco-friendly, enduringly',ant:'unsustainably, wastefully',ex:'Before plastic, people lived more sustainably with far fewer waste problems.'},
+{n:'37',w:'prosperity',m:'번영',syn:'wealth, success, abundance',ant:'poverty, decline, failure',ex:'The plastics industry came to symbolize the convenience and prosperity of the American dream.'},
+{n:'37',w:'counter',m:'~에 대응하다',syn:'oppose, challenge, fight back',ant:'support, agree, accept',ex:'The plastics industry was quick to counter these concerns.'},
+{n:'37',w:'symbolize',m:'~을 상징하다',syn:'represent, stand for, embody',ant:'contradict, misrepresent',ex:'The growing industry came to symbolize the convenience and prosperity of the American dream.'},
+{n:'37',w:'pollution',m:'오염',syn:'contamination, toxicity, filth',ant:'cleanliness, purity',ex:'They pushed the idea that pollution was the fault of consumers, not corporations.'},
+{n:'37',w:'corporation',m:'기업',syn:'company, business, firm',ant:'individual, consumer',ex:'Pollution was the fault of consumers, not the corporations flooding the market with plastic.'},
+{n:'37',w:'adoption',m:'채택',syn:'acceptance, embrace, use',ant:'rejection, refusal',ex:'After the rapid adoption of plastic during World War II, it was everywhere.'},
+// ── 38번 ──
+{n:'38',w:'paradigm',m:'패러다임',syn:'framework, model, worldview',ant:'',ex:'Our propositions about the world are embedded within paradigms.'},
+{n:'38',w:'embedded',m:'깊이 박힌, 내재된',syn:'ingrained, rooted, fixed',ant:'removed, detached',ex:'Our propositions about the world are embedded within paradigms.'},
+{n:'38',w:'undertake',m:'~을 착수하다',syn:'begin, commence, engage in',ant:'abandon, cease, give up',ex:'When scientists undertake research, they do so from within a specific paradigm.'},
+{n:'38',w:'exacting',m:'까다로운',syn:'demanding, rigorous, strict',ant:'lenient, easy, undemanding',ex:'Even the most exacting measurements are only sensible from within that paradigm.'},
+{n:'38',w:'sensible',m:'합리적인',syn:'reasonable, rational, logical',ant:'irrational, unreasonable, foolish',ex:'Measurements are only sensible from within a specific paradigm.'},
+{n:'38',w:'horizontal',m:'수평적인',syn:'lateral, side-to-side, level',ant:'vertical, hierarchical',ex:'Progress is not moving to a more accurate paradigm, but a horizontal shift.'},
+{n:'38',w:'proposition',m:'명제',syn:'claim, statement, assertion',ant:'',ex:'Our propositions about the world are embedded within paradigms.'},
+// ── 39번 ──
+{n:'39',w:'miraculous',m:'기적의',syn:'extraordinary, wonderful, amazing',ant:'ordinary, common, expected',ex:'A few hours later, the second visit presents a miraculous contrast.'},
+{n:'39',w:'striking',m:'인상적인',syn:'remarkable, impressive, dramatic',ant:'ordinary, unremarkable',ex:'Two visits to a cold greenhouse provide a striking introduction to the winter harvest.'},
+{n:'39',w:'reveal',m:'~을 드러내다',syn:'expose, uncover, show',ant:'hide, conceal, cover',ex:'Raising the inner covers reveals a sight of hard, frost-coated leaves.'},
+{n:'39',w:'convince',m:'~을 납득시키다',syn:'persuade, assure, make believe',ant:'doubt, dissuade',ex:'The bleak sight of frozen leaves is enough to convince anyone this idea is foolish.'},
+{n:'39',w:'bleak',m:'황량한',syn:'bare, desolate, grim',ant:'lush, thriving, vibrant',ex:'The leaves are bleak enough to convince anyone that this idea is foolish.'},
+{n:'39',w:'vigorous',m:'생기가 넘치는',syn:'lively, energetic, thriving',ant:'weak, frail, lifeless',ex:'Under the covers are rows of vigorous, healthy leaves.'},
+{n:'39',w:'contrast',m:'대조',syn:'difference, comparison, distinction',ant:'similarity, likeness',ex:'The second visit presents a miraculous contrast to the frozen dawn scene.'},
+{n:'39',w:'harvest',m:'수확',syn:'crop, yield, gathering',ant:'planting, sowing',ex:'Two visits provide a striking introduction to the winter harvest.'},
+// ── 40번 ──
+{n:'40',w:'independence',m:'독립심',syn:'autonomy, self-reliance, freedom',ant:'dependence, reliance',ex:'Parenting experts say children need to learn independence and resilience.'},
+{n:'40',w:'resilience',m:'회복 탄력성',syn:'toughness, adaptability, strength',ant:'fragility, weakness',ex:'Cities and suburbs don\'t offer safe environments for children to develop resilience.'},
+{n:'40',w:'navigate',m:'~을 헤쳐 나가다',syn:'manage, handle, deal with',ant:'avoid, ignore',ex:'All of those "musts" take more of the parents\' time or money to navigate.'},
+{n:'40',w:'tolerance',m:'관용',syn:'acceptance, patience, openness',ant:'intolerance, prejudice',ex:'We need to build back our tolerance for children in public spaces.'},
+{n:'40',w:'structural',m:'구조적인',syn:'systemic, organizational, foundational',ant:'superficial, temporary',ex:'Underparenting requires structural change in cities and suburbs.'},
+];
+
+// 지문 번호 목록
+const NUM_LIST = ['20','21','22','23','24','29','30','31','32','33','34','35','36','37','38','39','40'];
+
+// 상태
+let selectedNums = new Set(NUM_LIST);
+let quizMode = '';
+let quizQueue = [];
+let qIdx = 0, qCorrect = 0;
+let wrongWords = [];
+let selectedCount = 20;
+let currentWord = null;
+let lastMode = '', lastNums = null;
+
+// ── 초기화 ──
+function init() {
+  // 지문 버튼 생성
+  const grid = document.getElementById('num-grid');
+  NUM_LIST.forEach(n => {
+    const btn = document.createElement('button');
+    btn.className = 'num-btn sel';
+    btn.textContent = n + '번';
+    btn.dataset.num = n;
+    btn.onclick = () => toggleNum(btn, n);
+    grid.appendChild(btn);
+  });
+  updateStats();
+}
+
+function toggleNum(btn, n) {
+  if (selectedNums.has(n)) {
+    selectedNums.delete(n);
+    btn.classList.remove('sel');
+  } else {
+    selectedNums.add(n);
+    btn.classList.add('sel');
+  }
+  updateStats();
+}
+
+function selectAll() {
+  NUM_LIST.forEach(n => selectedNums.add(n));
+  document.querySelectorAll('.num-btn').forEach(b => b.classList.add('sel'));
+  updateStats();
+}
+
+function selectNone() {
+  selectedNums.clear();
+  document.querySelectorAll('.num-btn').forEach(b => b.classList.remove('sel'));
+  updateStats();
+}
+
+function updateStats() {
+  const pool = getPool();
+  const synPool = pool.filter(w => w.syn && w.syn.trim() !== '');
+  document.getElementById('total-words').textContent = ALL_WORDS.length;
+  document.getElementById('sel-count-display').textContent = pool.length;
+  document.getElementById('cnt-e2k').textContent = pool.length + '개';
+  document.getElementById('cnt-k2e').textContent = pool.length + '개';
+  document.getElementById('cnt-syn').textContent = synPool.length + '개';
+}
+
+function getPool() {
+  return ALL_WORDS.filter(w => selectedNums.has(w.n));
+}
+
+function setCnt(el, n) {
+  document.querySelectorAll('.cnt-btn').forEach(b => b.classList.remove('sel'));
+  el.classList.add('sel');
+  selectedCount = n;
+}
+
+// ── 퀴즈 시작 ──
+function startQuiz(mode, retryList = null) {
+  quizMode = mode;
+  lastMode = mode;
+  lastNums = new Set(selectedNums);
+
+  let pool;
+  if (retryList) {
+    pool = retryList;
+  } else {
+    pool = getPool();
+    if (mode === 'syn') pool = pool.filter(w => w.syn && w.syn.trim() !== '');
+  }
+
+  if (pool.length === 0) {
+    alert('선택된 지문의 단어가 없습니다. 지문을 선택해주세요!');
+    return;
+  }
+
+  pool = shuffle(pool);
+  if (!retryList && selectedCount > 0) pool = pool.slice(0, selectedCount);
+
+  quizQueue = pool;
+  qIdx = 0; qCorrect = 0; wrongWords = [];
+  showScreen('screen-quiz');
+  renderQ();
+}
+
+function renderQ() {
+  const item = quizQueue[qIdx];
+  const total = quizQueue.length;
+  currentWord = item;
+
+  // 진행
+  document.getElementById('q-label').textContent = `${qIdx+1}/${total}`;
+  document.getElementById('q-score').textContent = `맞춤: ${qCorrect}`;
+  document.getElementById('q-prog').style.width = `${(qIdx/total)*100}%`;
+  document.getElementById('q-src-badge').textContent = '📌 ' + item.n + '번';
+
+  // 배지
+  const typeLabels = {e2k:'🔤 영어→한글', k2e:'📖 한글→영어', syn:'🔁 유의어→단어'};
+  document.getElementById('q-type-badge').textContent = typeLabels[quizMode];
+
+  // 문제
+  let questionText = '', hintText = '';
+  if (quizMode === 'e2k') {
+    questionText = item.w;
+    hintText = '위 단어의 한글 뜻을 고르세요';
+  } else if (quizMode === 'k2e') {
+    questionText = item.m;
+    hintText = '위 뜻에 해당하는 영단어를 고르세요';
+  } else {
+    // 유의어 표시
+    const syns = item.syn.split(',').map(s => s.trim());
+    questionText = syns[0];
+    hintText = '위 유의어에 해당하는 지문 속 단어를 고르세요';
+  }
+
+  document.getElementById('q-word').textContent = questionText;
+  document.getElementById('q-hint').textContent = hintText;
+
+  // 발음 버튼 (영어가 표시될 때만)
+  const speakBtn = document.getElementById('speak-btn');
+  speakBtn.style.display = (quizMode === 'e2k' || quizMode === 'syn') ? 'inline-flex' : 'none';
+
+  // 선택지 생성
+  const correct = quizMode === 'k2e' ? item.w : item.m;
+  const pool = ALL_WORDS.filter(x => x.w !== item.w);
+  const seen = new Set([correct]);
+  const dist = [];
+  for (const d of shuffle(pool)) {
+    const v = quizMode === 'k2e' ? d.w : d.m;
+    if (!seen.has(v)) { seen.add(v); dist.push(v); if (dist.length === 3) break; }
+  }
+  const choices = shuffle([{t: correct, ok: true}, ...dist.map(d => ({t: d, ok: false}))]);
+
+  const grid = document.getElementById('q-choices');
+  grid.innerHTML = '';
+  const nums = ['①','②','③','④'];
+  choices.forEach((c, i) => {
+    const btn = document.createElement('button');
+    btn.className = 'choice';
+    btn.innerHTML = `<span class="ch-num">${nums[i]}</span><span>${c.t}</span>`;
+    btn.onclick = () => checkAnswer(c.ok, btn, item, choices);
+    grid.appendChild(btn);
+  });
+
+  // 리셋
+  document.getElementById('answer-reveal').className = 'answer-reveal';
+  document.getElementById('q-next').className = 'next-btn';
+  document.getElementById('speak-btn').classList.remove('playing');
+}
+
+function speakWord() {
+  if (!currentWord) return;
+  const btn = document.getElementById('speak-btn');
+  btn.classList.add('playing');
+  const wordToSpeak = quizMode === 'syn' ? currentWord.syn.split(',')[0].trim() : currentWord.w;
+  if (typeof responsiveVoice !== 'undefined') {
+    responsiveVoice.speak(wordToSpeak, 'US English Female', {
+      rate: 0.85,
+      onend: () => btn.classList.remove('playing')
+    });
+  } else {
+    // Web Speech API 폴백
+    const utter = new SpeechSynthesisUtterance(wordToSpeak);
+    utter.lang = 'en-US'; utter.rate = 0.85;
+    utter.onend = () => btn.classList.remove('playing');
+    speechSynthesis.speak(utter);
+  }
+}
+
+function checkAnswer(ok, btn, item, choices) {
+  document.querySelectorAll('.choice').forEach(b => b.disabled = true);
+  document.querySelectorAll('.choice').forEach(b => {
+    const t = b.querySelector('span:last-child').textContent;
+    const c = choices.find(x => x.t === t);
+    if (c && c.ok) b.classList.add('correct');
+  });
+
+  if (ok) {
+    qCorrect++;
+    btn.classList.add('correct');
+  } else {
+    btn.classList.add('wrong');
+    wrongWords.push(item);
+  }
+
+  document.getElementById('q-score').textContent = `맞춤: ${qCorrect}`;
+
+  // 정답 공개
+  const reveal = document.getElementById('answer-reveal');
+  reveal.className = 'answer-reveal show';
+  document.getElementById('answer-tag').innerHTML = ok
+    ? '<span class="correct-tag">✅ 정답!</span>'
+    : '<span class="wrong-tag">❌ 오답!</span>';
+
+  document.getElementById('a-word').textContent = item.w;
+  document.getElementById('a-meaning').textContent = item.m;
+
+  // 유의어
+  if (item.syn && item.syn.trim()) {
+    document.getElementById('a-syn-section').style.display = 'block';
+    document.getElementById('a-syn').textContent = item.syn;
+    document.getElementById('a-ant-div').style.display = 'block';
+  } else {
+    document.getElementById('a-syn-section').style.display = 'none';
+    document.getElementById('a-ant-div').style.display = 'none';
+  }
+
+  // 반의어
+  if (item.ant && item.ant.trim()) {
+    document.getElementById('a-ant-section').style.display = 'block';
+    document.getElementById('a-ant').textContent = item.ant;
+    document.getElementById('a-ex-div').style.display = 'block';
+  } else {
+    document.getElementById('a-ant-section').style.display = 'none';
+    document.getElementById('a-ex-div').style.display = 'none';
+  }
+
+  // 예문
+  if (item.ex && item.ex.trim()) {
+    document.getElementById('a-ex-section').style.display = 'block';
+    document.getElementById('a-ex').textContent = item.ex;
+  } else {
+    document.getElementById('a-ex-section').style.display = 'none';
+  }
+
+  document.getElementById('q-next').className = 'next-btn show';
+}
+
+function nextQ() {
+  qIdx++;
+  if (qIdx >= quizQueue.length) showResult();
+  else renderQ();
+}
+
+// ── 결과 ──
+function showResult() {
+  const total = quizQueue.length;
+  const pct = Math.round((qCorrect / total) * 100);
+  document.getElementById('r-pct').textContent = pct + '%';
+  document.getElementById('result-ring').style.setProperty('--pct', pct + '%');
+  document.getElementById('r-correct').textContent = qCorrect;
+  document.getElementById('r-wrong').textContent = total - qCorrect;
+  document.getElementById('r-total').textContent = total;
+
+  const msgs = [
+    [90, '🏆 완벽!', '압도적인 실력입니다!'],
+    [70, '👏 훌륭해요!', '조금만 더 하면 완벽!'],
+    [50, '💪 노력 중!', '오답 복습으로 점프업!'],
+    [0, '📚 더 연습해요', '오답 집중 복습이 필요해요'],
+  ];
+  const [, t, s] = msgs.find(([th]) => pct >= th);
+  document.getElementById('r-title').textContent = t;
+  document.getElementById('r-sub').textContent = s;
+
+  // 오답 목록
+  const wList = document.getElementById('wrong-list');
+  wList.innerHTML = '';
+  const unique = [...new Map(wrongWords.map(w => [w.w, w])).values()];
+
+  if (unique.length === 0) {
+    wList.innerHTML = '<div style="text-align:center;color:var(--green);padding:20px;font-size:13px">✅ 오답 없음! 완벽합니다!</div>';
+  } else {
+    unique.forEach(w => {
+      const el = document.createElement('div');
+      el.className = 'wrong-item';
+      el.innerHTML = `
+        <div class="wrong-word">${w.w} <span style="font-size:10px;color:var(--muted)">[${w.n}번]</span></div>
+        <div class="wrong-meaning">뜻: ${w.m}</div>
+        ${w.syn ? `<div class="wrong-syn">유의어: ${w.syn}</div>` : ''}
+        ${w.ant ? `<div class="wrong-syn" style="color:rgba(231,76,60,.6)">반의어: ${w.ant}</div>` : ''}
+        ${w.ex ? `<div class="wrong-ex">예문: ${w.ex}</div>` : ''}
+      `;
+      wList.appendChild(el);
+    });
+  }
+
+  showScreen('screen-result');
+}
+
+function retryWrong() {
+  if (wrongWords.length === 0) return;
+  const unique = [...new Map(wrongWords.map(w => [w.w, w])).values()];
+  startQuiz(quizMode, unique);
+}
+
+function restartSame() {
+  startQuiz(quizMode);
+}
+
+function goHome() {
+  showScreen('screen-home');
+  updateStats();
+}
+
+// ── 유틸 ──
+function showScreen(id) {
+  document.querySelectorAll('.screen').forEach(s => s.classList.remove('active'));
+  document.getElementById(id).classList.add('active');
+  window.scrollTo(0, 0);
+}
+
+function shuffle(arr) {
+  const a = [...arr];
+  for (let i = a.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [a[i], a[j]] = [a[j], a[i]];
+  }
+  return a;
+}
+
+init();
+</script>
+</body>
+</html>
